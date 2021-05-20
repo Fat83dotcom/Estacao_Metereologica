@@ -29,6 +29,7 @@ double getTemp() {
   return Temp;  
 }
 
+
 void principal() {
 
   static unsigned long ultimaLetura = millis();
@@ -37,26 +38,20 @@ void principal() {
     float umid     = bme.readHumidity();
     float pressao  = bme.readPressure() / 100.0F;
     float temp10k = getTemp();
-    if (Serial.available() > 0) {
-      if (Serial.read() == 0xA) {
-        Serial.print("u ");
-        Serial.println(umid, DEC);
-      }
-      
-    }
-    
-    
 
-    // Serial.print("t1 ");
-    // Serial.println(temp);
+    Serial.print("u ");
+    Serial.println(umid);
+  
+    Serial.print("1 ");
+    Serial.println(temp);
 
-    // Serial.print("p ");
-    // Serial.println(pressao);
+    Serial.print("p ");
+    Serial.println(pressao);
 
-    // Serial.print("t2 ");
-    // Serial.println(temp10k);
+    Serial.print("2 ");
+    Serial.println(temp10k);
   }
-  if ((millis() - ultimaLetura) >= 99){
+  if ((millis() - ultimaLetura) >= 499){
     ultimaLetura = millis();
   }
 }
